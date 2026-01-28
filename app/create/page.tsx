@@ -1,5 +1,5 @@
 'use client'
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -13,7 +13,8 @@ import {
     FieldLabel
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { createData } from "../data-access-layer/getData";
+import { createData } from "./action";
+import Link from "next/link";
 
 const CreateData = () => {
     const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +29,7 @@ const CreateData = () => {
   return (
     <div>
       <Card className="max-w-2xl mx-auto">
+        <Link href="/" className={buttonVariants({ size: "sm", variant: "link" })}>Home Page</Link>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
           <CardDescription>

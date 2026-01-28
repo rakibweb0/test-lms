@@ -1,7 +1,10 @@
-"use server"
+import "server-only"
 import prisma from "@/lib/prisma";
+import { cacheTag } from "next/cache";
 
 export const getData = async () => {
+  'use cache'
+  cacheTag('user')
   try {
     const res = await prisma.test.findMany();
     return res;
@@ -10,17 +13,4 @@ export const getData = async () => {
   }
 };
 
-export const createData = async (name: string, email: string, phone: string) => {
-  try {
-    const res = await prisma.test.create({
-      data: {
-        name,
-        email,
-        phone,
-      },
-    });
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
-};
+

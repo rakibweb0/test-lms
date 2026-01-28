@@ -1,25 +1,28 @@
-import { getData } from "./data-access-layer/getData";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-export const dynamic = "force-dynamic";
+import Link from "next/link";
+import { getData } from "./data-access-layer/getData";
 
 export default async function Home() {
   const data = await getData();
-
   if (!data) return <div>No data</div>;
-
   return (
     <div className="max-w-2xl mx-auto border mt-20">
+      <Link
+        href="/create"
+        className={buttonVariants({ size: "sm", variant: "link" })}
+      >
+        Create Page
+      </Link>
+
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="">Id</TableHead>
