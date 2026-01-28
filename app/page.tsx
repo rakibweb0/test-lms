@@ -1,8 +1,11 @@
-import prisma from "@/lib/prisma";
+import { getData } from "./data-access-layer/getData";
 
 export default async function Home() {
-  const getData = await prisma.test.findMany()
+  const data = await getData()
+
+  if (!data) return <div>No data</div>
+
   return (
-    <div>Hello {getData[0].name}</div>
+    <div>Hello {data[0]?.name} and your email is {data[0]?.email}</div>
   );
 }

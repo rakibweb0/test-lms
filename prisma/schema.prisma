@@ -14,8 +14,8 @@ datasource db {
 }
 
 model Test {
-  id    Int    @unique
+  id    String    @id @default(cuid())
   name  String
   email String
-  phone Int
+  phone String
 }
